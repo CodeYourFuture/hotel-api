@@ -21,6 +21,9 @@ jobs:
       - run: npm run test
   deploy:
     needs: [ check ]
+    environment:
+      name: netlify
+      url: ${{ vars.PUBLIC_URL }}
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-22.04
     steps:
