@@ -4,9 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test --test-reporter=spec"
   },
   "keywords": [],
-  "author": "Jonathan Sharpe <mail@jonrshar.pe>",
-  "license": "ISC"
+  "author": "CodeYourFuture",
+  "funding": "https://github.com/sponsors/CodeYourFuture",
+  "contributors": [
+    "Jonathan Sharpe <mail@jonrshar.pe>"
+  ],
+  "license": "ISC",
+  "engines": {
+    "node": "^20.9"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^2.6.0"
+  }
 }
