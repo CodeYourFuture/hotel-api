@@ -7,7 +7,7 @@ module.exports = {
 	async handler() {
 		return {
 			body: JSON.stringify(fakeBookings),
-			headers:  { "Content-Type": "application/json" },
+			headers: { "Content-Type": "application/json" },
 			statusCode: 200,
 		};
 	},

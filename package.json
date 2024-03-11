@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "deploy": "netlify deploy --dir .",
+    "dev": "netlify dev",
+    "e2e": "concurrently --kill-others --success=first \"npm:e2e:*\"",
+    "e2e:app": "cross-env BROWSER=none npm run dev",
+    "pree2e:run": "wait-on --log --timeout 10000 http-get://localhost:8888",
+    "e2e:run": "npm test -- e2e.js",
     "lint": "eslint .",
+    "start": "netlify serve",
     "test": "node --test --test-reporter=spec"
   },
   "keywords": [],
@@ -20,6 +27,11 @@
   "devDependencies": {
     "@codeyourfuture/eslint-config-standard": "^4.0.3",
     "@netlify/functions": "^2.6.0",
-    "eslint": "^8.57.0"
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.57.0",
+    "netlify-cli": "^17.19.1",
+    "supertest": "^6.3.4",
+    "wait-on": "^7.2.0"
   }
 }
