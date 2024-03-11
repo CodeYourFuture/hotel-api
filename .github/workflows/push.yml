@@ -19,6 +19,7 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run test
+      - run: npm run e2e
   deploy:
     needs: [ check ]
     environment:
@@ -32,8 +33,8 @@ jobs:
         with:
           cache: npm
           node-version: 20
-      - run: npm install --global netlify-cli
-      - run: netlify deploy --dir . --prod true
+      - run: npm ci
+      - run: npm run deploy -- --prod true
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

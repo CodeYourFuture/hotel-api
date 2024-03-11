@@ -8,7 +8,7 @@ module.exports = {
 		await delay(5_000);
 		return {
 			body: JSON.stringify(fakeBookings),
-			headers:  { "Content-Type": "application/json" },
+			headers: { "Content-Type": "application/json" },
 			statusCode: 200,
 		};
 	},
