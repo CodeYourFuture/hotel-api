@@ -3,6 +3,7 @@ module.exports = {
 	async handler() {
 		return {
 			body: JSON.stringify({ error: "Whoops something went wrong!" }),
+			headers:  { "Content-Type": "application/json" },
 			statusCode: 500,
 		};
 	},
