@@ -9,8 +9,8 @@ module.exports = {
 	},
 
 	/** @type {import("@netlify/functions").Handler} */
-	handler(_, context) {
-		const { id: customerId } = context.params;
+	async handler(event) {
+		const customerId = event.path.split("/").at(-1);
 		const customer = fakeCustomers.find((c) => c.id.toString() === customerId);
 		if (!customer) {
 			return {

@@ -1,6 +1,6 @@
 module.exports = {
 	/** @type {import("@netlify/functions").Handler} */
-	handler() {
+	async handler() {
 		return {
 			body: JSON.stringify({ error: "Whoops something went wrong!" }),
 			statusCode: 500,
