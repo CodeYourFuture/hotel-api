@@ -3,21 +3,21 @@ const { join } = require("node:path");
 const fakeCustomers = require(join(__dirname, "fakeCustomers.json"));
 
 module.exports = {
-  /** @type {import("@netlify/functions").Config} */
-  config: {
-    path: "/customers/:id"
-  },
+	/** @type {import("@netlify/functions").Config} */
+	config: {
+		path: "/customers/:id",
+	},
 
-  /** @type {import("@netlify/functions").Handler} */
-  handler(_, context) {
-    const { id: customerId } = context.params;
-    const customer = fakeCustomers.find((c) => c.id.toString() === customerId);
-    if (!customer) {
-      return {
-        body: JSON.stringify({ error: `Customer ID ${customerId} cannot be found` }),
-        statusCode: 404,
-      };
-    }
-    return { body: JSON.stringify(customer), statusCode: 200 };
-  },
+	/** @type {import("@netlify/functions").Handler} */
+	handler(_, context) {
+		const { id: customerId } = context.params;
+		const customer = fakeCustomers.find((c) => c.id.toString() === customerId);
+		if (!customer) {
+			return {
+				body: JSON.stringify({ error: `Customer ID ${customerId} cannot be found` }),
+				statusCode: 404,
+			};
+		}
+		return { body: JSON.stringify(customer), statusCode: 200 };
+	},
 };
