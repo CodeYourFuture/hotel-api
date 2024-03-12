@@ -7,7 +7,10 @@ describe("GET /delayed", () => {
 	it("returns 200 OK with bookings in 5 seconds", { timeout: 5_500 }, async () => {
 		const { body, headers, statusCode } = await handler();
 		assert.equal(statusCode, 200);
-		assert.deepEqual(headers, { "Content-Type": "application/json" });
+		assert.deepEqual(headers, {
+			"Access-Control-Allow-Origin": "*",
+			"Content-Type": "application/json",
+		});
 		const bookings = JSON.parse(body);
 		assert.equal(bookings.length, 5);
 		assert.deepEqual(bookings[3], {

@@ -12,7 +12,7 @@ module.exports = {
 	async handler(event) {
 		const customerId = event.path.split("/").at(-1);
 		const customer = fakeCustomers.find((c) => c.id.toString() === customerId);
-		const headers =  { "Content-Type": "application/json" };
+		const headers =  { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" };
 		if (!customer) {
 			return {
 				body: JSON.stringify({ error: `Customer ID ${customerId} cannot be found` }),

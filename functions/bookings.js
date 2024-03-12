@@ -7,7 +7,7 @@ module.exports = {
 	async handler() {
 		return {
 			body: JSON.stringify(fakeBookings),
-			headers: { "Content-Type": "application/json" },
+			headers: { "Access-Control-Allow-Origin": "*", "Content-Type": "application/json" },
 			statusCode: 200,
 		};
 	},
