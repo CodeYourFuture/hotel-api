@@ -10,6 +10,7 @@ describe("API", () => {
 		it("provides an array of bookings", async () => {
 			const { body } = await request(BASE_URL)
 				.get("/")
+				.expect("Access-Control-Allow-Origin", "*")
 				.expect(200);
 			assert.equal(body.length, 5);
 			assert.deepEqual(body[0], {
@@ -29,6 +30,7 @@ describe("API", () => {
 		it("provides one customer", async () => {
 			await request(BASE_URL)
 				.get("/customers/1")
+				.expect("Access-Control-Allow-Origin", "*")
 				.expect(200, {
 					id: 1,
 					title: "Mr",
@@ -45,6 +47,7 @@ describe("API", () => {
 		it("responds Internal Server Error", async () => {
 			await request(BASE_URL)
 				.get("/error")
+				.expect("Access-Control-Allow-Origin", "*")
 				.expect(500, { error: "Whoops something went wrong!" });
 		});
 	});

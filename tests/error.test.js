@@ -7,7 +7,10 @@ describe("GET /error", () => {
 	it("returns 500 Internal Server Error with a message", async () => {
 		const { body, headers, statusCode } = await handler();
 		assert.equal(statusCode, 500);
-		assert.deepEqual(headers, { "Content-Type": "application/json" });
+		assert.deepEqual(headers, {
+			"Access-Control-Allow-Origin": "*",
+			"Content-Type": "application/json",
+		});
 		assert.deepEqual(JSON.parse(body), { error: "Whoops something went wrong!" });
 	});
 });

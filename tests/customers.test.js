@@ -11,7 +11,10 @@ describe("GET /customers/:id", () => {
 	it("returns 200 OK with customer if found", async () => {
 		const { body, headers, statusCode } = await handler({ path: "/path/to/customers/4" });
 		assert.equal(statusCode, 200);
-		assert.deepEqual(headers, { "Content-Type": "application/json" });
+		assert.deepEqual(headers, {
+			"Access-Control-Allow-Origin": "*",
+			"Content-Type": "application/json",
+		});
 		assert.deepEqual(JSON.parse(body), {
 			id: 4,
 			title: "Dame",
@@ -26,7 +29,10 @@ describe("GET /customers/:id", () => {
 	it("returns 404 OK with error if not found", async () => {
 		const { body, headers, statusCode } = await handler({ path: "/path/to/customers/123" });
 		assert.equal(statusCode, 404);
-		assert.deepEqual(headers, { "Content-Type": "application/json" });
+		assert.deepEqual(headers, {
+			"Access-Control-Allow-Origin": "*",
+			"Content-Type": "application/json",
+		});
 		assert.deepEqual(JSON.parse(body), { error: "Customer ID 123 cannot be found" });
 	});
 });
