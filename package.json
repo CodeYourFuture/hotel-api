@@ -8,7 +8,7 @@
     "dev": "netlify dev",
     "e2e": "concurrently --kill-others --success=first \"npm:e2e:*\"",
     "e2e:app": "cross-env BROWSER=none npm run dev",
-    "pree2e:run": "wait-on --log --timeout 10000 http-get://localhost:8888",
+    "pree2e:run": "wait-on --log --timeout 30000 http-get://localhost:8888",
     "e2e:run": "npm test -- e2e.js",
     "lint": "eslint .",
     "start": "netlify serve",
